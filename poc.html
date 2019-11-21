@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Dropdown filter POC</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #f1f1f1;
+                padding: 20px;
+                font-family: Arial;
+            }
+
+            /* Center website */
+            .main {
+                max-width: 1000px;
+                margin: auto;
+            }
+
+            h1 {
+                font-size: 50px;
+                word-break: break-all;
+            }
+
+            .row {
+                margin: 8px -16px;
+            }
+
+            /* Add padding BETWEEN each column (if you want) */
+            .row,
+            .row > .column {
+                padding: 8px;
+            }
+
+            /* Create four equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 33%;
+            }
+
+            /* Clear floats after rows */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Content */
+            .content {
+                background-color: white;
+                padding: 10px;
+                position: relative;
+            }
+
+            .content img {
+                width: 300px;
+                height: 300px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Dropdown Button */
+            .dropbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Dropdown button on hover & focus */
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #3e8e41;
+            }
+
+            /* The search field */
+            #myInput {
+                box-sizing: border-box;
+                background-image: url('searchicon.png');
+                background-position: 14px 12px;
+                background-repeat: no-repeat;
+                font-size: 16px;
+                padding: 14px 20px 12px 45px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            /* The search field when it gets focus/clicked on */
+            #myInput:focus {outline: 3px solid #ddd;}
+
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f6f6f6;
+                min-width: 230px;
+                border: 1px solid #ddd;
+                z-index: 1;
+                height: 150px;
+                overflow: auto;
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #f1f1f1}
+
+            /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+            .show {display:block;}
+        </style>
+    </head>
+    <body>
+
+        <div class ="dropContainer">
+            <div class="dropdown">
+                <button title="Century" onclick="myFunction(); selectedDropDown(this)" class="dropbtn">Centuries</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                    <a id="All-Centuries" onclick="selectedValue(this)" href="#all">Show All</a>
+                    <a id="15th" onclick="selectedValue(this)" href="#15th">15th Century</a>
+                    <a id="16th" onclick="selectedValue(this)" href="#16th">16th Century</a>
+                    <a id="17th" onclick="selectedValue(this)" href="#17th">17th Century</a>
+                    <a id="18th" onclick="selectedValue(this)" href="#18th">18th Century</a>
+                    <a id="19th" onclick="selectedValue(this)" href="#19th">19th Century</a>
+                    <a id="20th" onclick="selectedValue(this)" href="#20th">20th Century</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <center>
+                <h1>Dropdown Filter POC</h1>
+                <h3>Select the 'Centuries' menu and select an option to filter the list by. \n Use the Search Bar to filter the dropdown.</h3>
+
+            </center>
+        </div>
+
+        <div class="row" id="listHere"></div>
+
+        <script>
+            const artistList = [
+                {
+                    "artistID": "1",
+                    "artistName": "Leonardo da Vinci",
+                    "image": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTY2MzU4MjUzMDA4MDcwMzE4/portrait-of-leonardo-da-vinci-1452-1519-getty.jpg",
+                    "birthday": "04/15/1452",
+                    "death": "05/02/1519",
+                    "age": "67",
+                    "century": ["15th", "16th"]
+                },
+                {
+                    "artistID": "2",
+                    "artistName": "Salvadore Dali",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/440px-Salvador_Dal%C3%AD_1939.jpg",
+                    "birthday": "06/11/1904",
+                    "death": "01/23/1989",
+                    "age": "84",
+                    "century": ["20th"]
+                },
+                {
+                    "artistID": "3",
+                    "artistName": "Vincent van Gogh",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/440px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg",
+                    "birthday": "03/30/1853",
+                    "death": "07/29/1890",
+                    "age": "37",
+                    "century": ["19th"]
+                },
+                {
+                    "artistID": "4",
+                    "artistName": "Rembrandt",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/440px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg",
+                    "birthday": "07/15/1606",
+                    "death": "10/04/1669",
+                    "age": "63",
+                    "century": ["17th"]
+                },
+                {
+                    "artistID": "5",
+                    "artistName": "William Blake",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/William_Blake_by_Thomas_Phillips.jpg/440px-William_Blake_by_Thomas_Phillips.jpg",
+                    "birthday": "11/28/1757",
+                    "death": "08/12/1827",
+                    "age": "69",
+                    "century": ["18th", "19th"]
+                }
+
+            ];
+
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+//prints the name of the selected dropdown menu
+            var activeFilter = "";
+
+//return value of selected dropdown
+            function selectedDropDown(title) {
+                console.log("Selected Dropdown: " + activeFilter);
+                activeFilter = title.title;
+            }
+
+//returns the value of selected value and filters the artistList by the selected dropdown and value 
+            function selectedValue(anchorObj) {
+                console.log("Selected Value: " + anchorObj.id);
+
+                var filterFn = null;
+                if (anchorObj.id === "All-Centuries" || anchorObj.id === undefined) {
+                    filterFn = null;
+                } else {
+                    filterFn = function (c) {
+                        return c.century.includes(anchorObj.id);
+                    };
+                }
+
+                var filteredArtists = filterFn ? artistList.filter(filterFn) : artistList;
+                console.log(filteredArtists);
+
+                document.getElementById("listHere").innerHTML = `
+${filteredArtists.map(artistTemplate).join("")}
+`;
+            }
+
+
+            selectedValue({});
+
+
+//Artist template
+            function artistTemplate(artist) {
+                return `
+        <div class="column">
+           <div class = "content">
+                <img src="${artist.image}">   
+                    
+           </div>
+        </div>
+    `;
+            }
+
+
+//function that filters the dropdown menu via search
+            function filterFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                div = document.getElementById("myDropdown");
+                a = div.getElementsByTagName("a");
+                for (i = 0; i < a.length; i++) {
+                    txtValue = a[i].textContent || a[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        a[i].style.display = "";
+                    } else {
+                        a[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
+
+

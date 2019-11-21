@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Dropdown Filter</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" />
+        <link href="style/style.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+
+        <!-- -->
+        <div class ="dropContainer">
+            <div class="dropdown">
+                <button title="Century" onclick="myFunction(Century); selectedDropDown(this)" class="dropbtn">Centuries</button>
+                <div id="Century" class="dropdown-content">
+                    <input type="text" placeholder="Search..." id="myInput1" onkeyup="filterFunction(Century, myInput1)">
+                    <a id="All-Centuries" onclick="selectedValue(this)" href="#all">Show All</a>
+                    <a id="15th" onclick="selectedValue(this)" href="#15th">15th Century</a>
+                    <a id="16th" onclick="selectedValue(this)" href="#16th">16th Century</a>
+                    <a id="17th" onclick="selectedValue(this)" href="#17th">17th Century</a>
+                    <a id="18th" onclick="selectedValue(this)" href="#18th">18th Century</a>
+                    <a id="19th" onclick="selectedValue(this)" href="#19th">19th Century</a>
+                    <a id="20th" onclick="selectedValue(this)" href="#20th">20th Century</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button title="Nationality" onclick="myFunction(Nationality); selectedDropDown(this)" class="dropbtn">Nationalities</button>
+                <div id="Nationality" class="dropdown-content">
+                    <input type="text" placeholder="Search..." id="myInput2" onkeyup="filterFunction(Nationality, myInput2)">
+                    <a id="All-Nationalities" onclick="selectedValue(this)" href="#all">Show All</a>
+                    <a id="American" onclick="selectedValue(this)" href="#American">American</a>
+                    <a id="Austrian" onclick="selectedValue(this)" href="#Austrian">Austrian</a>
+                    <a id="British" onclick="selectedValue(this)" href="#British">British</a>
+                    <a id="Dutch" onclick="selectedValue(this)" href="#Dutch">Dutch</a>
+                    <a id="French" onclick="selectedValue(this)" href="#French">French</a>
+                    <a id="Greek" onclick="selectedValue(this)" href="#Greek">Greek</a>
+                    <a id="Italian" onclick="selectedValue(this)" href="#Italian">Italian</a>
+                    <a id="Mexican" onclick="selectedValue(this)" href="#Mexican">Mexican</a>
+                    <a id="Spanish" onclick="selectedValue(this)" href="#Spanish">Spanish</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button title="Periods" onclick="myFunction(Periods); selectedDropDown(this)" class="dropbtn">Periods</button>
+                <div id="Periods" class="dropdown-content">
+                    <input type="text" placeholder="Search..." id="myInput3" onkeyup="filterFunction(Periods, myInput3)">
+                    <a id="All-Periods" onclick="selectedValue(this)" href="#All">Show All</a>
+                    <a id="Abstract-Expressionism" onclick="selectedValue(this)" href="#0">Abstract Expressionism</a>
+                    <a id="Action-Painting" onclick="selectedValue(this)" href="#1">Action Painting</a>
+                    <a id="African-Period" onclick="selectedValue(this)" href="#2">African Period</a>
+                    <a id="Analytical-Cubism" onclick="selectedValue(this)" href="#3">Analytical Cubism</a>
+                    <a id="Art-Nouveau" onclick="selectedValue(this)" href="#4">Art Nouveau</a>
+                    <a id="Baroque" onclick="selectedValue(this)" href="#5">Baroque</a>
+                    <a id="Blue-Period" onclick="selectedValue(this)" href="#6">Blue Period</a>
+                    <a id="Cloisonnism" onclick="selectedValue(this)" href="#7">Cloisonnism</a>
+                    <a id="Contemporary" onclick="selectedValue(this)" href="#8">Contemporary</a>
+                    <a id="Cubism" onclick="selectedValue(this)" href="#9">Cubism</a>
+                    <a id="Dada" onclick="selectedValue(this)" href="#10">Dada</a>
+                    <a id="Dutch-Golden-Age" onclick="selectedValue(this)" href="#11">Dutch Golden Age</a>
+                    <a id="Early-Renaissance" onclick="selectedValue(this)" href="#12">Early Renaissance</a>
+                    <a id="Expressionism" onclick="selectedValue(this)" href="#13">Expressionism</a>
+                    <a id="Fauvism" onclick="selectedValue(this)" href="#14">Fauvism</a>
+                    <a id="Florentine" onclick="selectedValue(this)" href="#15">Florentine</a>
+                    <a id="High-Renaissance" onclick="selectedValue(this)" href="#16">High Renaissance</a>
+                    <a id="Impressionism" onclick="selectedValue(this)" href="#17">Impressionism</a>
+                    <a id="Italian-Renaissance" onclick="selectedValue(this)" href="#18">Italian Renaissance</a>
+                    <a id="Japonism" onclick="selectedValue(this)" href="#19">Japonism</a>
+                    <a id="Magical-Realism" onclick="selectedValue(this)" href="#20">Magical Realism</a>
+                    <a id="Mannerism" onclick="selectedValue(this)" href="#21">Mannerism</a>
+                    <a id="Modern-Art" onclick="selectedValue(this)" href="#22">Modern Art</a>
+                    <a id="Modernism" onclick="selectedValue(this)" href="#23">Modernism</a>
+                    <a id="Naive-Art" onclick="selectedValue(this)" href="#24">Naive Art</a>
+                    <a id="Naturalism" onclick="selectedValue(this)" href="#25">Naturalism</a>
+                    <a id="Neo-Impressionism" onclick="selectedValue(this)" href="#26">Neo-Impressionism</a>
+                    <a id="Pointillism" onclick="selectedValue(this)" href="#27">Pointillism</a>
+                    <a id="Pop-Art" onclick="selectedValue(this)" href="#28">Pop Art</a>
+                    <a id="Post-Impressionism" onclick="selectedValue(this)" href="#29">Post-Impressionism</a>
+                    <a id="Primitivism" onclick="selectedValue(this)" href="#30">Primitivism</a>
+                    <a id="Realism" onclick="selectedValue(this)" href="#31">Realism</a>
+                    <a id="Renaissance" onclick="selectedValue(this)" href="#32">Renaissance</a>
+                    <a id="Romanticism" onclick="selectedValue(this)" href="#33">Romanticism</a>
+                    <a id="Rose-Period" onclick="selectedValue(this)" href="#34">Rose Period</a>
+                    <a id="Social-Realism" onclick="selectedValue(this)" href="#35">Social Realism</a>
+                    <a id="Surrealism" onclick="selectedValue(this)" href="#36">Surrealism</a>
+                    <a id="Symbolism" onclick="selectedValue(this)" href="#37">Symbolism</a>
+                    <a id="Synthetic-Cubism" onclick="selectedValue(this)" href="#38">Synthetic Cubism</a>
+                    <a id="Vienna-Secession" onclick="selectedValue(this)" href="#39">Vienna Secession</a>
+                </div>
+            </div>
+        </div>
+        
+    <center>
+        <div class="header">
+
+            <h1>Dropdown Filter</h1>
+            <h3>Select the 'Centuries', 'Nationalities', or 'Periods' menu and select an option to filter the list by.
+                Use the Search Bar to filter the dropdown. Hover over the images for more information on the artist. 
+                Click 'Learn More' to be redirected to their Wiki page.</h3>
+            <h2>Current Filter:</h2>
+            <div class="filter" id='filteredBy'></div>
+
+        </div>
+
+        <div class="wrapper" id="listHere"></div>
+    </center>
+
+
+    <script src="js/artists.js"></script>
+    <script src="js/dropdown.js"></script>
+
+</body>
+</html>
