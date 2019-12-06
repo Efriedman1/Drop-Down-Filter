@@ -1,3 +1,5 @@
+<h1><a href="http://cis-linux2.temple.edu:8080/FA19_3344_tug45244/Tutorial/index.html" target="_blank">Click here</a> to visit the original tutorial page.</p></h1>
+
 <h1>Tutorial: Filterable Drop Down Filter</h1>
 <h3>This is a tutorial project I created for class to show programmers how to use my resusable drop down filter component</h3>
 
